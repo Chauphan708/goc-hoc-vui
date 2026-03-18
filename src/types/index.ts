@@ -35,6 +35,7 @@ export interface GroupProgress {
 export interface Group {
     id: string;
     name: string;
+    pin: string; // 4-digit code to join
     members: string[];
     currentStationId: string | null;
     progress: GroupProgress[];

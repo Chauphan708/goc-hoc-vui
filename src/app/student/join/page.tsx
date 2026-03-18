@@ -19,13 +19,26 @@ export default function StudentJoinPage() {
 
     const handleJoin = () => {
         if (!selectedGroupId || !session) return;
-        // Lưu tạm id nhóm vào localStorage (mô phỏng đăng nhập)
-        localStorage.setItem("groupId", selectedGroupId);
+        
+        // Tìm nhóm có mã PIN khớp
+        const group = session.groups.find(g => g.pin === selectedGroupId);
+        
+        if (!group) {
+            alert("Mã PIN không đúng rồi! Bạn kiểm tra lại với thầy cô nhé.");
+            return;
+        }
 
-        if (session.type === "game") {
-            router.push("/student/game");
+        // Lưu tạm id nhóm vào localStorage
+        localStorage.setItem("groupId", group.id);
+
+        if (session.status === 'active') {
+            if (session.type === "game") {
+                router.push("/student/game");
+            } else {
+                router.push("/student/station");
+            }
         } else {
-            router.push("/student/station");
+            alert("Buổi học chưa bắt đầu! Hãy đợi thầy cô bấm nút 'Bắt đầu' nhé.");
         }
     };
 

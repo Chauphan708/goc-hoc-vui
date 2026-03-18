@@ -178,12 +178,13 @@ export const useSessionStore = create<SessionState>((set) => ({
     },
 
     addGroup: async (name) => {
+        const pin = Math.floor(1000 + Math.random() * 9000).toString();
         set((state) => {
             if (!state.session) return state;
             return {
                 session: {
                     ...state.session,
-                    groups: [...state.session.groups, { id: uuidv4(), name, members: [], currentStationId: null, progress: [] }]
+                    groups: [...state.session.groups, { id: uuidv4(), name, pin, members: [], currentStationId: null, progress: [] }]
                 }
             };
         });
@@ -208,16 +209,18 @@ export const useSessionStore = create<SessionState>((set) => ({
     startSession: async () => {
         set((state) => {
             if (!state.session) return state;
-            const stIds = state.session.stations.map(s => s.id);
-            const mockGroups: Group[] = [
-                { id: uuidv4(), name: "Nhóm Sóc Nâu", members: [], currentStationId: stIds[0], progress: [{ stationId: stIds[0], status: "in_progress", score: 0, bonusScore: 0 }, { stationId: stIds[1], status: "completed", score: 10, bonusScore: 5 }] },
-                { id: uuidv4(), name: "Nhóm Gấu Trúc", members: [], currentStationId: stIds[1], progress: [{ stationId: stIds[0], status: "debt", score: 0, bonusScore: 0 }, { stationId: stIds[1], status: "in_progress", score: 0, bonusScore: 0 }] },
-                { id: uuidv4(), name: "Nhóm Thỏ Trắng", members: [], currentStationId: stIds[0], progress: [{ stationId: stIds[0], status: "in_progress", score: 0, bonusScore: 0 }] }
-            ];
+            
+            // Assign groups to their first station if not already assigned
+            const firstStationId = state.session.stations[0]?.id || null;
+            const updatedGroups = state.session.groups.map(g => ({
+                ...g,
+                currentStationId: g.currentStationId || firstStationId
+            }));
+
             return {
                 session: {
                     ...state.session,
-                    groups: state.session.groups.length > 0 ? state.session.groups : mockGroups,
+                    groups: updatedGroups,
                     status: 'active',
                     startTime: Date.now()
                 }

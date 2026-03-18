@@ -76,6 +76,41 @@ export default function CreateSessionPage() {
                 />
             </div>
 
+            {/* Groups Management */}
+            <div className="card mb-8" style={{ borderTop: "6px solid var(--c-primary)" }}>
+                <div className="flex justify-between items-center mb-4">
+                    <h3>Quản lý Nhóm & Mã PIN ({session.groups.length})</h3>
+                    <button 
+                        className="btn btn-secondary" 
+                        style={{ padding: "8px 16px" }}
+                        onClick={() => {
+                            const name = prompt("Nhập tên nhóm mới:", `Nhóm ${session.groups.length + 1}`);
+                            if (name) addGroup(name);
+                        }}
+                    >
+                        + Thêm Nhóm
+                    </button>
+                </div>
+                {session.groups.length === 0 ? (
+                    <p style={{ color: "var(--c-text-light)", textAlign: "center", padding: "20px" }}>Chưa có nhóm nào. Hãy thêm nhóm để học sinh có thể tham gia!</p>
+                ) : (
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "12px" }}>
+                        {session.groups.map(group => (
+                            <div key={group.id} className="card" style={{ padding: "12px", textAlign: "center", position: "relative" }}>
+                                <button 
+                                    onClick={() => removeGroup(group.id)}
+                                    style={{ position: "absolute", top: "4px", right: "8px", color: "var(--c-accent)", fontSize: "0.8rem" }}
+                                >✕</button>
+                                <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "4px" }}>{group.name}</div>
+                                <div style={{ background: "var(--c-background)", padding: "4px", borderRadius: "8px", color: "var(--c-primary)", fontWeight: "bold", fontSize: "1.2rem", letterSpacing: "2px" }}>
+                                    PIN: {group.pin}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
             {/* Stations List */}
             <div className="flex justify-between items-center mb-4">
                 <h3>Các Góc Hoạt Động ({session.stations.length}/10)</h3>
