@@ -305,6 +305,7 @@ export const useSessionStore = create<SessionState>((set) => ({
             useSessionStore.getState().subscribeToChanges(data.id);
             return true;
         }
+        if (error) console.error("Error finding session:", error);
         return false;
     },
 
