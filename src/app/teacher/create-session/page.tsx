@@ -33,7 +33,12 @@ export default function CreateSessionPage() {
             <div className="flex items-center justify-between mb-8">
                 <div>
                     <h1 style={{ fontSize: "2rem", color: "var(--c-primary)" }}>🏕️ Thiết Lập Buổi Học</h1>
-                    <p style={{ color: "var(--c-text-light)" }}>Chuẩn bị các góc học tập thật vui cho học sinh nào!</p>
+                    <div className="flex items-center gap-2">
+                        <p style={{ color: "var(--c-text-light)", margin: 0 }}>Chuẩn bị các góc học tập thật vui cho học sinh nào!</p>
+                        <div style={{ background: "var(--c-primary)", color: "white", padding: "2px 10px", borderRadius: "12px", fontWeight: "bold", fontSize: "0.9rem" }}>
+                            Mã của bạn: {session.code}
+                        </div>
+                    </div>
                 </div>
                 <div className="flex gap-4">
                     <button className="btn btn-secondary" onClick={() => setShowTemplateModal(true)}>
