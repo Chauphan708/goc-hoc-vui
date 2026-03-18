@@ -1,0 +1,149 @@
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\page.tsx
+  Line 24: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+  Line 24: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\student\game\page.tsx
+  Line 23: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\student\game\page.tsx:23:9
+  21 |
+  22 |     useEffect(() => {
+> 23 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |         const id = localStorage.getItem("groupId");
+  25 |         if (!id) router.push("/student/join");
+  26 |         else setGroupId(id); (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\student\join\page.tsx
+  Line 15: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\student\join\page.tsx:15:9
+  13 |
+  14 |     useEffect(() => {
+> 15 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |     }, []);
+  17 |
+  18 |     if (!isClient) return <div className="p-8 text-center">Đang tải...</div>; (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\student\station\page.tsx
+  Line 13: 'helpRequests' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 53: React Hook "useSettingsStore" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return? (react-hooks/rules-of-hooks)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\create-session\page.tsx
+  Line 7: 'Template' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 17: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\create-session\page.tsx:17:9
+  15 |
+  16 |     useEffect(() => {
+> 17 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  18 |         if (!session) {
+  19 |             // Mock teacher ID for now
+  20 |             initSession("Buổi học Thám Hiểm Rừng Xanh", "teacher-123", "station"); (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\dashboard\page.tsx
+  Line 29: Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\dashboard\page.tsx:29:110
+  27 |                 <div>
+  28 |                     <h1 style={{ fontSize: "2rem", color: "var(--c-primary)" }}>{session.title} 🎩</h1>
+> 29 |                     <p style={{ color: "var(--c-text-light)" }}>Khởi tạo lúc: {new Date(session.startTime || Date.now()).toLocaleTimeString()}</p>
+     |                                                                                                              ^^^^^^^^^^ Cannot call impure function
+  30 |                 </div>
+  31 |                 <div className="flex gap-4">
+  32 |                     <button className="btn btn-outline"> (react-hooks/purity)
+  Line 144: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+  Line 144: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\qr-codes\page.tsx
+  Line 13: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\qr-codes\page.tsx:13:9
+  11 |
+  12 |     useEffect(() => {
+> 13 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  14 |         if (!session || session.status === "draft") {
+  15 |             router.push("/teacher/create-session");
+  16 |         } (react-hooks/set-state-in-effect)
+  Line 46: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element (@next/next/no-img-element)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\report\page.tsx
+  Line 14: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\report\page.tsx:14:9
+  12 |
+  13 |     useEffect(() => {
+> 14 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |         if (!session || session.status === "draft") {
+  16 |             router.push("/teacher/create-session");
+  17 |         } (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\settings\page.tsx
+  Line 16: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\app\teacher\settings\page.tsx:16:9
+  14 |
+  15 |     useEffect(() => {
+> 16 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |         setInputValue(geminiApiKey);
+  18 |     }, [geminiApiKey]);
+  19 | (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\components\shared\Mascot.tsx
+  Line 16: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\components\shared\Mascot.tsx:16:13
+  14 |     useEffect(() => {
+  15 |         if (message) {
+> 16 |             setShowBubble(true);
+     |             ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |
+  18 |             if (playAudio && 'speechSynthesis' in window) {
+  19 |                 window.speechSynthesis.cancel(); (react-hooks/set-state-in-effect)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\components\shared\QRScanner.tsx
+  Line 35: 'errorMessage' is defined but never used. (@typescript-eslint/no-unused-vars)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\data\templates.ts
+  Line 1: 'uuidv4' is defined but never used. (@typescript-eslint/no-unused-vars)
+C:\Users\chaup\.gemini\antigravity\scratch\goc-hoc-vui\src\stores\useSessionStore.ts
+  Line 13: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 88: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)

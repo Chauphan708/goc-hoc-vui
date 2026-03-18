@@ -1,0 +1,19 @@
+{
+  "name": "Góc Học Vui",
+  "short_name": "Góc Học Vui",
+  "description": "Trợ lý dạy học theo góc và trò chơi lớn",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#FF9D23",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/student/join",
+  "scope": "/"
+}
