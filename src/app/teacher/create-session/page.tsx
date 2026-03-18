@@ -8,7 +8,7 @@ import { TEMPLATES } from "@/data/templates";
 
 export default function CreateSessionPage() {
     const router = useRouter();
-    const { session, initSession, updateTitle, updateType, addStation, updateStation, removeStation, startSession, loadTemplate } = useSessionStore();
+    const { session, initSession, updateTitle, updateType, addStation, updateStation, removeStation, startSession, loadTemplate, addGroup, removeGroup } = useSessionStore();
 
     const [isClient, setIsClient] = useState(false);
     const [showTemplateModal, setShowTemplateModal] = useState(false);
