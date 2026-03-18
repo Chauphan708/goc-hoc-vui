@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSessionStore } from "@/stores/useSessionStore";
 import { motion, AnimatePresence } from "framer-motion";
@@ -29,8 +30,13 @@ export default function TeacherDashboard() {
     return (
         <div className="container" style={{ padding: "2rem 1rem" }}>
             <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-                <div>
-                    <h1 style={{ fontSize: "2rem", color: "var(--c-primary)" }}>{session.title} 🎩</h1>
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                        <Link href="/" className="btn btn-outline" style={{ padding: "4px 8px", fontSize: "1rem" }}>
+                            🏠
+                        </Link>
+                        <h1 style={{ fontSize: "2rem", color: "var(--c-primary)", margin: 0 }}>{session.title} 🎩</h1>
+                    </div>
                     <p style={{ color: "var(--c-text-light)" }}>Khởi tạo lúc: {startTimeString}</p>
                 </div>
                 <div className="flex gap-4">
