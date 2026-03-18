@@ -43,6 +43,7 @@ export interface Group {
 
 export interface Session {
     id: string;
+    code: string; // 6-digit short code
     teacherId: string;
     title: string;
     type: "station" | "game";

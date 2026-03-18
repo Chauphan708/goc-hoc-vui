@@ -32,6 +32,7 @@ interface SessionState {
     updateGroupProgress: (groupId: string, stationId: string, data: Partial<GroupProgress>) => Promise<void>;
 
     // Supabase Sync
+    findSessionByCode: (code: string) => Promise<boolean>;
     syncFromSupabase: (sessionId: string) => Promise<void>;
     subscribeToChanges: (sessionId: string) => void;
 }
@@ -71,8 +72,10 @@ export const useSessionStore = create<SessionState>((set) => ({
     helpRequests: [],
 
     initSession: async (title, teacherId, type = "station") => {
+        const code = Math.random().toString(36).substring(2, 8).toUpperCase();
         const newSession: Session = {
             id: uuidv4(),
+            code,
             teacherId,
             title,
             type: type as "station" | "game",
@@ -288,6 +291,21 @@ export const useSessionStore = create<SessionState>((set) => ({
         });
         const session = useSessionStore.getState().session;
         if (session) await supabase.from('sessions').update({ groups: session.groups }).eq('id', session.id);
+    },
+
+    findSessionByCode: async (code: string) => {
+        const { data, error } = await supabase
+            .from('sessions')
+            .select('*')
+            .eq('code', code.toUpperCase())
+            .single();
+        
+        if (data && !error) {
+            set({ session: data });
+            useSessionStore.getState().subscribeToChanges(data.id);
+            return true;
+        }
+        return false;
     },
 
     syncFromSupabase: async (sessionId) => {

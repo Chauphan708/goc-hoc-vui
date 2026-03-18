@@ -37,7 +37,12 @@ export default function TeacherDashboard() {
                         </Link>
                         <h1 style={{ fontSize: "2rem", color: "var(--c-primary)", margin: 0 }}>{session.title} 🎩</h1>
                     </div>
-                    <p style={{ color: "var(--c-text-light)" }}>Khởi tạo lúc: {startTimeString}</p>
+                    <div className="flex gap-4 items-center">
+                        <p style={{ color: "var(--c-text-light)", margin: 0 }}>Khởi tạo lúc: {startTimeString}</p>
+                        <div style={{ background: "white", padding: "4px 12px", borderRadius: "20px", border: "2px solid var(--c-primary)", fontWeight: "bold" }}>
+                            Mã buổi học: <span style={{ color: "var(--c-primary)", fontSize: "1.2rem" }}>{session.code}</span>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex gap-4">
                     <button className="btn btn-outline">
